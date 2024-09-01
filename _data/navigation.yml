@@ -6,25 +6,25 @@
 
 main:
   - title: "Home-About Me"
-    url: /publications/
+    url: /Home-About Me/
 
-  - title: "ELT Vision"
-    url: /talks/    
+  - title: "ELT-Vision"
+    url: /ELT-Vision/    
 
   - title: "AR"
-    url: /teaching/    
+    url: /AR/    
     
   - title: "VR"
-    url: /portfolio/
+    url: /VR/
         
   - title: "MR-3D"
-    url: /year-archive/
+    url: /MR-3D/
     
   - title: "AI"
-    url: /cv/
+    url: /AI/
     
-  - title: "Tech Leadership"
-    url: /markdown/
+  - title: "Tech-Leadership"
+    url: /Tech-Leadership/
 
-  - title: "Final Reflection"
-    url: /markdown/
+  - title: "Final-Reflection"
+    url: /Final-Reflection/
