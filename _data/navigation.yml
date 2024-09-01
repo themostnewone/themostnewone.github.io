@@ -5,23 +5,26 @@
 # prevent it from being included in the site.
 
 main:
-  - title: "Publications"
-    url: /publications/
+  - title: "Home-About Me"
+    url: /Home-About Me/
 
-  - title: "Talks"
-    url: /talks/    
+  - title: "ELT Vision"
+    url: /ELT Vision/    
 
-  - title: "Teaching"
-    url: /teaching/    
+  - title: "AR"
+    url: /AR/    
     
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "VR"
+    url: /VR/
         
-  - title: "Blog Posts"
-    url: /year-archive/
+  - title: "MR-3D"
+    url: /MR-3D/
     
-  - title: "CV"
-    url: /cv/
+  - title: "AI"
+    url: /AI/
     
-  - title: "Guide"
-    url: /markdown/
+  - title: "Tech Leadership"
+    url: /Tech Leadership/
+
+  - title: "Final Reflection"
+    url: /Final Reflection/
