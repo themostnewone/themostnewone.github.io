@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Probability Quiz</title>
+    <style>
+        body {
+            background-image: url('back.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        table {
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            width: 60%;
+            text-align: center;
+        }
+
+        textarea {
+            border: 3px solid green;
+            padding: 10px;
+            width: 90%;
+            font-size: 16px;
+            font-style: italic;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            resize: none;
+            display: block;
+            margin: auto;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            width: 70%;
+        }
+
+        select, input[type="button"] {
+            font-size: 16px;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 2px solid #5cbdc4;
+            background-color: #eef;
+            cursor: pointer;
+        }
+
+        /* Title and subtitle styling */
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f5ed07;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #f5ed07;  /* Yellow color */
+            margin-bottom: 20px;
+        }
+
+        small {
+            font-size: 14px;
+        }
+
+        hr {
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: darkblue;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .center {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Move citation above the JavaScript Kit credit */
+        .citation {
+            font-size: 12px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div align="center">
+        <!-- Title and subtitle at the top -->
+        <div class="title">Data Science Probability Quiz</div>
+        <div class="subtitle">Probability theory is a foundational concept in data science, enabling better decision-making and predictions.</div>
+        
+        <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="100%">
+                    <form method="POST" name="instantquiz">
+                        <textarea rows="10" name="thequestion" cols="69" wrap="virtual" readonly></textarea>
+                        <div class="center">
+                            <strong>Solution: </strong>
+                            <input type="text" name="thesolution" readonly>
+                        </div>
+                        <div class="center">
+                            <strong>Your response:</strong>
+                            <select name="theresponse" onChange="responses()">
+                                <option value="-----">----</option>
+                                <option value="a">a</option>
+                                <option value="b">b</option>
+                                <option value="c">c</option>
+                                <option value="d">d</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <input type="button" value="<< Back" name="B1" onClick="if (whichone > 1) { whichone--; generatequestions() }">
+                            <input type="button" value="Next >>" name="B2" onClick="if (whichone <= total) { whichone++; generatequestions() }">
+                        </div>
+                        <div class="center">
+                            <small><a href="#" onClick="whichone = 1; generatequestions(); return false">Start Over</a></small>
+                            <input type="checkbox" name="cmode" value="ON">
+                            <small>Cheat Mode</small>
+                        </div>
+                        <hr>
+                        <!-- Moved citation right above the JavaScript Kit credit -->
+                        <div class="citation">
+                            <p>Content sourced from: <a href="https://www.scaler.com/topics/data-science/probability-and-statistics-for-data-science/" target="_blank">https://www.scaler.com/topics/data-science/probability-and-statistics-for-data-science/</a></p>
+                        </div>
+                        <p align="center">
+                            <small>This free quiz script provided by</small><br>
+                            <a href="http://javascriptkit.com"><small>JavaScript Kit</small></a>
+                        </p>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="popsolution.js"></script>
+
+    <script>
+        // Variables required by popsolution.js to generate questions
+        var whichone = 1;
+        var total = 10;  // Updated to 10 questions
+        var tempmn = document.instantquiz.thequestion;
+
+        // Ensure the question is generated upon page load
+        function generatequestions() {
+            document.instantquiz.theresponse.selectedIndex = 0;
+            if (!document.instantquiz.cmode.checked || whichone >= total + 1 || whichone <= 0) {
+                document.instantquiz.thesolution.value = '';
+            }
+            if (whichone >= total + 1) {
+                tempmn.value = "End of quiz";
+            } else {
+                tempmn.value = whichone + ")" + question[whichone] + "\n\n" +
+                    "a) " + eval('choice' + whichone + '[1]') + "\n" +
+                    "b) " + eval('choice' + whichone + '[2]') + "\n" +
+                    "c) " + eval('choice' + whichone + '[3]') + "\n" +
+                    "d) " + eval('choice' + whichone + '[4]');
+                if (document.instantquiz.cmode.checked) {
+                    document.instantquiz.thesolution.value = solution[whichone];
+                }
+            }
+        }
+
+        window.onload = generatequestions;
+
+        function responses() {
+            var temp2 = document.instantquiz.theresponse;
+            var temp3 = temp2.options[temp2.selectedIndex].text;
+            if (temp3 != solution[whichone] && temp2.selectedIndex != 0) {
+                document.instantquiz.thesolution.value = "Sorry, the correct answer is " + solution[whichone];
+            } else if (temp2.selectedIndex != 0) {
+                document.instantquiz.thesolution.value = compliments[Math.round(Math.random() * compliments.length - 1)];
+            }
+        }
+    </script>
+
+</body>
+
+</html>
